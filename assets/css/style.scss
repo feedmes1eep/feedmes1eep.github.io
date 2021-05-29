@@ -1,0 +1,9 @@
+---
+---
+
+@import "{{ site.theme }}";
+body{color: #d3cdcd;background-color: #180033;}
+.main-content{max-width: 90rem;}
+.main-content .highlight pre, .main-content pre{background-color: #312560;}
+.main-content pre code{color: white;}
+a{color: #00c5f2;}

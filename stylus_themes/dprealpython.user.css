@@ -1,0 +1,31 @@
+/* ==UserStyle==
+@name           RealPython - Yeet :dab:
+@namespace      github.com/feedmes1eep
+@version        0.0.1
+@description    Dark usetstyle for documentations in ReadTheDocs
+@author         FeedMeS1eep
+@updateURL      https://feedmes1eep.github.io/stylus_themes/dprealpython.user.css
+==/UserStyle== */
+
+@-moz-document domain("realpython.com") {
+    /* Insert code here... */
+    :root{
+        --background: #202020;
+        --text: #d2d2d2;
+    }
+    body{
+        background: var(--background);
+        color: var(--text);
+    }
+    .highlight pre, .card{
+        background-color: #bababa;
+        color: black;
+    }
+    #toc, #sidebar-toc{
+        background: var(--background)!important;
+        border: 1px solid white;
+    }
+    code{
+        color: #9191d8;
+    }
+}

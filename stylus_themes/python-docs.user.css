@@ -1,0 +1,45 @@
+/* ==UserStyle==
+@name           Python Docs - Draculaish Colors
+@namespace      ?
+@version        1.0.0
+@description    Draculaish color theme for python docs. Based it off of the color theme dracula but not the exact colors (i think).
+@author         FeedMeS1eep
+@updateURL      https://feedmes1eep.github.io/stylus_themes/python-docs.user.css
+==/UserStyle== */
+
+@-moz-document domain("docs.python.org"), url-prefix("http://localhost/python-docs/") {
+    /* Insert code here... */
+    :root{
+        --background: #211f27;
+        --text: #c7c7c7;
+        --link: #a86c8e;
+    }
+    body, html, div, div.related, div.document{
+        background-color: var(--background)!important;
+        color: var(--text)!important;
+    }
+    div a{
+        color: var(--link)!important;
+    }
+    h1,h2,h3{
+        background: var(--background)!important;
+        color: #a5a5ff!important;
+    }
+    code span.pre{
+        color: #748eff;
+    }
+    code{
+        background: #2a0505;
+        padding: 4px;
+    }
+    table.docutils th,table.docutils td{
+        background: var(--background);
+    }
+    pre{
+        background: #bdabd8;
+    }
+    .phinxsidebarwrapper{
+        border-left: 5px solid white;
+    }
+    
+}

@@ -1,0 +1,315 @@
+/**
+ * @name CustomClearVision
+ * @author FeedMeSleep
+ * @version ?
+ * @description Customized ClearVision theme
+ * @source https://github.com/feedmes1eep/feedmes1eep.github.io
+ * @website feedmes1eep.github.io
+ */
+ /*
+Table of Contents
+------------------
+├── [-] ClearVision miain.css import    ||  Line: 11
+├── [-] :root variables for general settings    ||  Line: 14 - 110
+├── [-] General edits   ||  Line: 113 - 122
+│   ├── [~] Text color of the elements that has the --main-color as background color    ||  Line: 114
+│   ├── [~] OverWrites text color of a selected/hovered elemeent when --main-color is too bright or dark. Change --hover-text depending on that color.  ||  Line: 115
+│   ├── [~] tooltip background. E.g, Background of the text box that pops out when hovering over a server icon. ||  Line: 117
+│   └── [~] BetterDiscord setting's element colors and edits    ||  Line: 118 - 122
+│       ├── [~] ClearVision text next to the Discord text in title bar. ||  Line: 119
+│       ├── [~] BetterDiscord's Public Server button below Home Buttom  ||  Line: 120
+│       ├── [~] Buttons inside the BetterDiscord Settings   ||  Line: 121
+│       └── [~] On/Off switch inside the BetterDiscord settings ||  Line: 122 
+├── [-] Chat area
+│   ├── [~] Line behind the chat date divider
+│   ├── [~] Added a background behind the date text to hite the divider line
+│   ├── [~] Play and Open link in browser buttons that are in the hud on videos
+│   ├── [~] Buttons in the chat area and above the chat area
+│   ├── [~] 
+│   ├── [~] 
+│   ├── [~] 
+│   └── [~] 
+*/
+
+
+ /* IMPORT CSS */
+ @import url(https://clearvision.gitlab.io/v6/main.css);
+ 
+ /* SETTINGS */
+ :root {
+ 
+     /* ACCENT COLORS */
+	 --main-color: #965dff; /* main accent color (hex, rgb or hsl) [default: #965dff] */
+	 --hover-color: #1e0e3d; /* hover accent color (hex, rgb or hsl) [default: #1e0e3d] */
+	 --main-rgb: 150, 93, 255; /* basically main-color but just the numbers */
+	 --hover-rgb: 30, 14, 61; /* basically hover-color but just the numbers */     
+     /* Change the color depending on what color you chose for the --main and --hover colors. for example, the default colors for this skin is dark so i went with white (255,255,255) for both text colors. */
+     --selected-text: rgb(255, 255, 255); /* Text of selected buttons and buttons where its selected when --main-color is a bright color or dark color */
+	 --hover-text: rgb(255,255,255); /* vise versa */
+	 --emoji-button: 200deg; /* You'll have to play around this to get the correct color for your theme. [Default: 200deg]*/
+     --spotify-color: rgba(118, 252, 165, 0.5); /* change this to differentiate the color of the background and the spotify gradient color if the main-color is a green color */
+     --hover-gradient: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0)) center/cover,linear-gradient(to right, var(--hover-color) calc(1% - 10px), transparent calc(80% - 55px));
+     --up-gradient: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0)) center/cover,linear-gradient(to top, var(--hover-color) calc(10% - 10px), transparent calc(90% - 55px));
+     --down-gradient: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0)) center/cover,linear-gradient(to bottom, var(--hover-color) calc(1% - 10px), transparent calc(90% - 150px));
+     --right-gradient: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0)) center/cover,linear-gradient(to right, var(--hover-color) calc(1% - 10px), transparent calc(90% - 1px));
+     --success-color: #449c75; /* success accent color (hex, rgb or hsl) [default: #43b581] */
+     --danger-color: #982929; /* danger accent color (hex, rgb or hsl) [default: #982929] */
+ 
+     /* STATUS COLORS */
+     --online-color: #317e5b; /* online status color (hex, rgb or hsl) [default: #43b581] */
+     --idle-color: #faa61a; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
+     --dnd-color: #982929; /* dnd status color (hex, rgb or hsl) [default: #982929] */
+     --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
+     --offline-color: #808080; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
+ 
+     /* GENERAL */
+     --main-font: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif; /* main font for app (font must be installed) [default: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif] */
+     --code-font: Consolas, Liberation Mono, Menlo, Courier, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
+     --server-columns: 1; /* amount of server list columns [default: 1] */
+     --channels-width: 220px; /* channel list width (240px for Discord default) [default: 220px] */
+     --members-width: 240px; /* member list width [default: 240px] */
+     --avatar-roundness: 50%; /* avatar roundness (0% for squares, 50% for circles) [default: 50%] */
+ 
+     /* APP BACKGROUND */
+     --background-shading: 100%; /* app background shading (0 for complete smoothness) [default: 100%] */
+     --background-overlay: rgba(0, 0, 0, 0.6); /* app background overlay color/gradient [default: rgba(0, 0, 0, 0.6)] */
+	 --background-image: url(https://i.imgur.com/aSU8TyC.jpg); /* app background image (link must be HTTPS) [default: url(https://clearvision.gitlab.io/images/sapphire.jpg)]*/
+     --background-position: center; /* app background position [default: center] */
+     --background-size: cover; /* app background size [default: cover] */
+     --background-repeat: no-repeat; /* app background repeat [default: no-repeat] */
+     --background-attachment: fixed; /* app background attachment [default: fixed] */
+     --background-brightness: 100%; /* app background brightness (< 100% for darken, > 100% for lighten) [default: 100%] */
+     --background-contrast: 100%; /* app background contrast [default: 100%] */
+     --background-saturation: 100%; /* app background saturation [default: 100%] */
+     --background-invert: 0%; /* app background invert (0 - 100%)  [default: 0%] */
+     --background-grayscale: 0%; /* app background grayscale ( 0 - 100%) [default: 0%] */
+     --background-sepia: 0%; /* app background sepia (0 - 100%) [default: 0%] */
+     --background-blur: 0px; /* app background blur [default: 0px] */
+     
+     /* HOME BUTTON ICON */
+	 --home-icon: url(https://feedmes1eep.github.io/assets/images/discordicon.png); /* home button icon (link must be HTTPS) [default: url(https://clearvision.gitlab.io/icons/discord.svg)]*/
+     --home-position: center; /* home button icon position [default: center] */
+     --home-size: 40px; /* home button icon size [default: 40px] */
+     
+     /* MODAL BACKDROP */
+     --backdrop-overlay: rgba(0, 0, 0, 0.8); /* modal backdrop overlay color/gradient [default: rgba(0, 0, 0, 0.8)] */
+     --backdrop-image: var(--background-image); /* modal backdrop image (link must be HTTPS) [default: var(---background-image)] */
+     --backdrop-position: var(--background-position); /* modal backdrop position [default: var(---background-position)] */
+     --backdrop-size: var(--background-size); /* modal backdrop size [default: var(---background-size)] */
+     --backdrop-repeat: var(--background-repeat); /* modal backdrop repeat [default: var(---background-repeat)] */
+     --backdrop-attachment: var(--background-attachment); /* modal backdrop attachment [default: var(--background-attachment)] */
+     --backdrop-brightness: var(--background-brightness); /* modal backdrop brightness (< 100% for darken, > 100% for lighten) [default: var(---background-brightness)] */
+     --backdrop-contrast: var(--background-contrast); /* modal backdrop contrast [default: var(---background-contrast)] */
+     --backdrop-saturation: var(--background-saturation); /* modal backdrop saturation [default: var(---background-saturation)] */
+     --backdrop-invert: var(--background-invert); /* modal backdrop invert (0 - 100%)  [default: var(---background-invert)] */
+     --backdrop-grayscale: var(--background-grayscale); /* modal backdrop grayscale ( 0 - 100%) [default: var(---background-grayscale)] */
+     --backdrop-sepia: var(--background-sepia); /* modal backdrop sepia (0 - 100%) [default: var(---background-sepia)] */
+     --backdrop-blur: var(--background-blur); /* modal backdrop blur [default: var(--background-blur)] */
+     
+     /* USER POPOUT BACKGROUND */
+     --user-popout-image: var(--background-image); /* app background image (link must be HTTPS) [default: var(---background-image)] */
+     --user-popout-position: var(--background-position); /* user popout background position [default: var(---background-position)] */
+     --user-popout-size: var(--background-size); /* user popout background size [default: var(---background-size)] */
+     --user-popout-repeat: var(--background-repeat); /* user popout background repeat [default: var(---background-repeat)] */
+     --user-popout-attachment: var(--background-attachment); /* user popout background attachment [default: var(--background-attachment)] */
+     --user-popout-brightness: var(--background-brightness); /* user popout background brightness (< 100% for darken, > 100% for lighten) [default: var(---background-brightness)] */
+     --user-popout-contrast: var(--background-contrast); /* user popout background contrast [default: var(---background-contrast)] */
+     --user-popout-saturation: var(--background-saturation); /* user popout background saturation [default: var(---background-saturation)] */
+     --user-popout-invert: var(--background-invert); /* user popout background invert (0 - 100%) [default: var(---background-invert)] */
+     --user-popout-grayscale: var(--background-grayscale); /* user popout background grayscale (0 - 100%) [default: var(---background-grayscale)] */
+     --user-popout-sepia: var(--background-sepia); /* user popout background sepia (0 - 100%) [default: var(---background-sepia)] */
+     --user-popout-blur: calc(var(--background-blur) + 3px); /* us-er popout background blur [default: calc(var(--background-blur) + 3px)] */
+     
+     /* USER MODAL BACKGROUND */
+     --user-modal-image: var(--background-image); /* app background image (link must be HTTPS) [default: var(---background-image)] */
+     --user-modal-position: var(--background-position); /* user modal background position [default: var(---background-position)] */
+     --user-modal-size: var(--background-size); /* user modal background size [default: var(---background-size)] */
+     --user-modal-repeat: var(--background-repeat); /* user modal background repeat [default: var(---background-repeat)] */
+     --user-modal-attachment: var(--background-attachment); /* user modal background attachment [default: var(--background-attachment)] */
+     --user-modal-brightness: var(--background-brightness); /* user modal background brightness (< 100% for darken, > 100% for lighten) [default: var(---background-brightness)] */
+     --user-modal-contrast: var(--background-contrast); /* user modal background contrast [default: var(---background-contrast)] */
+     --user-modal-saturation: var(--background-saturation); /* user modal background saturation [default: var(---background-saturation)] */
+     --user-modal-invert: var(--background-invert); /* user modal background invert (0 - 100%) [default: var(---background-invert)] */
+     --user-modal-grayscale: var(--background-grayscale); /* user modal background grayscale (0 - 100%) [default: var(---background-grayscale)] */
+     --user-modal-sepia: var(--background-sepia); /* user modal background sepia (0 - 100%) [default: var(---background-sepia)] */
+     --user-modal-blur: calc(var(--background-blur) + 3px); /* user modal background blur [default: calc(var(--background-blur) + 3px)] */
+ }
+
+                                    /* General edits */
+.container-2Pjhx-.selected-aXhQR6 .activityText-OW8WYb,.container-2Pjhx-.selected-aXhQR6 .name-uJV0GL,.da-header .wrapper-1sSZUt,.themed-OHr7kt.item-PXvHYJ,.topPill-30KHOu .themed-OHr7kt.item-PXvHYJ:hover, .appMount-3lHmkl .lookFilled-1Gx00P.colorBrand-3pXr91, .theme-dark .messagesPopout-24nkyi .da-channelName,.container-enaOkj svg, .tertiary-aMXF0g,#popout_6056 .subtext-qy79y1{color:var(--selected-text);filter: none;text-shadow: 0 0px 1px black;} /* Text color of the elements that has the --main-color as background color */
+.theme-dark .header-2-Imhb .tabBar-1kuXvJ .tab-ck0077.active-1MbGPa,.appMount-3lHmkl .lookFilled-1Gx00P.colorBrand-3pXr91:hover{color: var(--hover-text)!important;} /* OverWrites text color of a selected/hovered elemeent when --main-color is too bright or dark. Change --hover-text depending on that color.*/
+.tooltipBlack-PPG47z{background-color: rgba(var(--hover-rgb), 0.75)!important;} /* tooltip background */
+/* new tooltip classes */
+.tooltip-2QfLtc{border-radius: 7px;}
+.theme-dark .tooltipPrimary-1d1ph4{background-color: rgba(var(--hover-rgb),0.75)}
+.theme-dark .tooltipPrimary-1d1ph4 .tooltipPointer-3ZfirK{border-top-color: rgba(var(--hover-rgb),0.75)}
+.theme-dark .tooltipMuted-26IcoY{color: #fff;}                          
+
+/* bd setting's element colors and edits*/
+.typeWindows-1za-n7>.wordmark-2iDDfm:before{display:none;}.typeWindows-1za-n7>.wordmark-2iDDfm:after{display: none;} /* ClearVision text next to the Discord text in title bar */
+#bd-pub-li{display: none;} /* Better discord's public server button */
+.bd-button,.bd-pfbtn,.bd-addon-list .bd-card-footer button{background-color: var(--main-color);} /* buttons || Normal */ .bd-button:hover,.bd-pfbtn:hover,.bd-addon-list .bd-card-footer button:hover{background-color: var(--hover-color);} /* buttons || Hovered */
+.bd-modal-wrapper .bd-content-modal .bd-modal-inner{background: var(--down-gradient)!important;}
+.bd-modal-wrapper .header,.bd-modal-wrapper .bd-content-modal .bd-modal-body{background-color: transparent;}
+
+                                    /* chat area */
+.divider-JfaTT5{background-color:   var(--main-color);} /* line behind the text of date divider */
+.content-1o0f9g{backdrop-filter: blur(6px);background: none} /* background of the date text (to hide the border line) */
+.iconWrapperActive-12kkfE>svg>polygon,.markup-2BOw-j a>svg>path{fill: var(--main-color);} /* play button and open link in browser button on videos */
+.username-1A8OIy.clickable-1bVtEA:hover{text-decoration: none;text-shadow: 0px 3px 5px rgb(var(--main-rgb));} /* text decoration when you hover over names */
+
+/* buttons in the chat area and above the chat area */
+.container-3npvBV{top: -2px;} /* fixes the position of the buttons that is on the right side when you hover over a message */
+.clickable-3rdHwn .icon-22AiRD{color: var(--main-color);filter: brightness(0.7);}
+.clickable-3rdHwn:hover .icon-22AiRD{color: var(--main-color);filter: none;}
+
+/* buttons in chat input box */
+.buttons-3JBrkn svg>path,.buttons-3JBrkn svg{fill: var(--main-color);filter: brightness(0.5);} /* Normal */
+.buttonWrapper-1ZmCpA:hover svg{filter: brightness(1);} /* when hovered */
+.attachButtonInner-PQjIyk>svg>path, .attachButtonPlus-jWVFah{fill: var(--hover-color);}/* attachment button || Normal */
+.attachButton-2WznTc:hover .attachButtonPlus-jWVFah, .attachButton-2WznTc:hover>.attachButtonInner-PQjIyk>svg>path{fill: var(--main-color);} /* when hovered */
+.sprite-2iCowe[style*="filter"]{filter:hue-rotate(var(--emoji-button)) brightness(50%)!important;} /* emoji button in chat input box || Normal */
+.sprite-2iCowe:hover[style*="filter"]{filter:hue-rotate(var(--emoji-button)) brightness(90%)!important;} /* when hovered */
+
+/* Emoji/GIF picker */
+.drawerSizingWrapper-17Mss4{background: var(--down-gradient);border-radius: 10px 10px 0px 0px;border-bottom: 2px dashed var(--main-color);} /* background */
+.container-2XeR5Z, #gif-picker-tab-panel .inner-2P4tQO{border-radius: 15px;border: 1px solid var(--hover-color);background-color: var(--background-overlay); } /* border of search box in Eomji section */
+.header-1TOWci .icon-1S6UIr {color: var(--main-color);} 
+.list-donH_Z{border-right: 2px solid var(--hover-color);} /* a border to the right of the server scrollbar */
+.inspector-3LQtX9,.unicodeShortcut-15J8Ck{height: 55px;background-color: var(--hover-color);} /* container that has the "Go to normal emoji's" emoji in and the container that has the details of the emoji you hover over */
+/* GIF and Emoji nav buttons */
+.navButtonActive-1MkytQ{color: var(--main-color)!important;filter: none!important;background: rgba(var(--main-rgb),0.2);} /* Active */
+.navButton-2gQCx-{color: var(--main-color);filter: none;} /* normal */
+.navButton-2gQCx-:hover{color: var(--main-color);filter: brightness(75%);} /* when hovered */
+.header-8ilj5e,.theme-dark .header-1TOWci{box-shadow: none;}
+/* new emote detail popout */
+.emojiSection-3Fb9ix,.guildSection-1EoFKd{background: transparent;} /* makes the foreground's backgorund transparent */
+.popoutContainer-1MXdqN{background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0)) center/cover,linear-gradient(to bottom, var(--hover-color) calc(1% - 10px), transparent calc(90% - 10px));} /* makes the popout's background transparent to make the ClearVision effect */
+#popout_501::before{content: "";position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: calc(-2 * var(--user-popout-blur));background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);-webkit-filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(var(--user-popout-brightness)) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(60%) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));z-index: -1;border-radius: 10px;}
+
+/* mention/unreads and pinned messages drop down */
+.theme-dark .header-ykumBX{background-color: var(--hover-color)!important;}
+
+/* search area */
+.searchResultsWrap-3-pOjs::before, .jumpButton-1ol35X, .searchResult-2N9RV4.expanded-ovgtuV{content: "";position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: calc(-2 * var(--user-popout-blur));background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);-webkit-filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(var(--user-popout-brightness)) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(60%) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));z-index: -1;border-radius: 10px;} /* brings out the "clear" in the theme */
+.searchResultsWrap-3-pOjs{background: transparent;}/* search area background */
+
+
+                                    /* rectangle containers */
+/* containers in home page */
+.privateChannels-1nO12o .channel-2QD9_O:hover .layout-2DM8Md:before{background: var(--right-gradient);transition: ease-in 0.4s;background-color: rgba(39, 39, 39,0.3);} /* Background of the containers */
+/* SVG icons of friends/library/Nitro in home page */
+.privateChannels-1nO12o .channel-2QD9_O .linkButtonIcon-Mlm5d6{color: var(--main-color);filter: brightness(65%);} /* not-hovered */
+.privateChannels-1nO12o .channel-2QD9_O:hover .linkButtonIcon-Mlm5d6{color: var(--main-color);filter: none;} /* when hovered */
+.privateChannels-1nO12o .channel-2QD9_O.selected-aXhQR6 .linkButtonIcon-Mlm5d6{filter: none;}
+/* home-page container names color */
+.container-2Pjhx- .name-uJV0GL{color: var(--main-color);filter: brightness(85%);} /* not-hovered */
+.clickable-1JJAn8.container-2Pjhx-:hover .name-uJV0GL{color: var(--main-color);filter:none;} /* when hovered */
+
+/* inside servers */
+.containerDefault-1ZnADq .wrapper-1ucjTd.modeSelected-1zApJ_ .content-3QAtGj .name-3_Dsmg{text-shadow: 0 2px 9px black;}
+/* near user profile */
+.title-eS5yk3{color: var(--main-color);filter: brightness(0.6);}
+.gameIcon-2YB8Et,.button-14-BFJ>.contents-18-Yxp>svg{color: var(--main-color);} /* the unknown games and screenshare/corkscrew/muteundefean icon that is near the user profile. screenshot showing which parts: https://bit.ly/2NmBc4t */
+.panels-j1Uci_>:first-child {box-shadow: 0 -3px 14px 5px rgba(var(--main-rgb), calc(var(--background-shading) * .1));} /* a small shadow for the game container and container above profile pciture */
+.container-1giJp5>.flex-1O1GKY {padding :5px;} /* voice connected box too small for the texts */
+
+
+                                    /* popout modals */
+.container-3JTnYm{background-color: rgba(var(--hover-rgb), 0.8);} /* the voice channel member's playing-games menu */
+.backdrop-1wrmKB:after{background: transparent;}
+.backdropWithLayer-3_uhz4,.backdrop-1wrmKB:before{background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);filter: brightness(50%) blur(2.3px);} /* backdrop change of blacked out popout backdrops */
+.root-SR8cQa,.theme-dark .root-1gCeng{background: var(--down-gradient);border-bottom: 2px dashed var(--main-color);box-shadow: 0 20px 40px 10px black;} /* background color of popouts menus */
+.theme-dark .footer-2gL1pp{background: transparent;} /* footer part of popout menus */
+.theme-dark .footer-2gL1pp{box-shadow: none;} /* footer box shadow (shows as a border) */
+.root-SR8cQa>.topSectionSpotify-1lI0-P{background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)) center/cover,linear-gradient(to bottom, var(--spotify-color) calc(95% - 55px), transparent calc(110% - 55px));;}
+/*Screen share modal*/
+.card-2Mz_4z{background: transparent;border: solid var(--hover-color) 1px;} /* background of the box that has the application that you are going to stream and the streaming channel */
+.selectorButton-EEUWed:not(.selectorButtonPremiumRequired-mKMbIu):hover{background-color: var(--hover-color);} /* Background color wwhen you hover over resolutions and frame rate */
+.item-3T2z1R:last-child{padding: 0 6px 0 6px;} /* "Source" had bad spacing to the sides so fixed it. */
+/* pinned messages */
+.theme-dark .messagesPopout-24nkyi,.container-enaOkj{background-color: rgba(var(--main-rgb), 0.1);} /* pinned message dropdown's background color */
+.messageGroupWrapper-o-Zw7G:hover .messageGroupCozy-2iY6cT{background-color: var(--hover-color);} /* pinned message's background color */
+.messageGroupWrapper-o-Zw7G>div>div>img {padding-top: 5px;} /* avatar spacing fix inside pinned message dropdown */
+
+                                    /* Server and home button wrapper / left side bar */
+.wrapper-21YSNc .expandedFolderBackground-2sPsd-{background: var(--up-gradient);} /* expanded background of folder. Normal clearvision one has full transparent background and it sometimes confuses me kek */
+.folder-21wGz3{background: var(--hover-color);}
+.wrapper-1BJsBx:hover .childWrapper-anI2G9, .wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9{background: var(--hover-color);} /* selected server or home's backgrounc color (that is if there is no picture for the server */
+
+                                    /* Screen share */
+.scroller-2TWLdF{background: rgba(var(--hover-rgb),0.8);}/* Color of the participants hover popout */
+
+                                    /* Elements inside profile settings section *.
+
+
+/* personal preferences - you can enable these if you want or copy the links you want to use above this comment section 
+/*  .attachButton-2WznTc:hover .attachButtonInner-PQjIyk svg path.attachButtonPlus-jWVFah{fill:var(--hover-color);} /* color of attachment button when hovoring */ 
+
+
+/* temp fixes */
+/* unreads/mentions dropdown section */
+.messages-3G3erD{background-color: var(--backdrop-overlay);}
+.messages-3G3erD{border-radius: 0 0 10px 10px;}
+.channelHeader-3Gd2xq{background: var(--hover-color);border-radius: 7px 7px 0px 0px;margin: 10px 0 0 0;padding-left: 26px;padding-right: 17px;} /* Channel box */
+.messages-3G3erD{margin: 0 0 -10px 0;}
+.collapseButton-2ZsEjz{padding-left: 12px;}
+
+.contentWrapper-SvZHNd{background-color: none;background: none;}/* clearvision's grey background removal */
+.emojiPicker-3PwZFl{background: var(--down-gradient);} /* gif picker background fix */
+.header-8ilj5e,.theme-dark .header-1TOWci{border: none;} 
+
+.avatarUploaderInner-3UNxY3{background-color: var(--main-color);} /* background-Color of server invite background upload box */
+.theme-dark .card-FDVird:before{background-color: var(--hover-color);color: var(--hover-color)!important;border-color: transparent;} /* temp fix to the emoji cards in server settings */
+
+/* forgot what these are */
+
+.sizeSmall-2cSMqn{min-width: 95px;}
+
+
+/* Something i had in my css file on local webserver for months... */
+
+.searchResultsWrap-3-pOjs::before, .jumpButton-1ol35X, .searchResult-2N9RV4.expanded-ovgtuV,.menu-3sdvDG::after{content: "";position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: calc(-2 * var(--user-popout-blur));background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);-webkit-filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(var(--user-popout-brightness)) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(60%) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));z-index: -1;border-radius: 10px;}
+.searchResultsWrap-3-pOjs{background: transparent;}
+
+.avatarUploaderInner-3UNxY3{background-color: var(--main-color);} /* background-Color of server invite background upload box */
+.theme-dark .card-FDVird:before{background-color: var(--hover-color);color: var(--hover-color)!important;border-color: transparent;} /* temp fix to the emoji cards in server settings */
+
+
+/* upload menu popout */
+.attachPopout-36hjtN{background: transparent;border: none;} 
+.attachPopout-36hjtN::before{content: "";position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: calc(-2 * var(--user-popout-blur));background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);-webkit-filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(var(--user-popout-brightness)) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(60%) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));z-index: -1;border-radius: 10px;}
+.popouts-2bnG9Z{left: 18px;} /* changes position of the popout a bit */
+
+
+.subscribeTooltipWrapper-32-Ce8{background: var(--hover-color);} /* popout 36 background-color */
+.subscribeTooltipWrapper-32-Ce8::after{border-bottom-color: var(--hover-color);} /* popout36's arrow */
+.menu-3sdvDG{background: transparent;} /* server dropdown menu */
+.viewAsRolesWarning-11eD70{background: var(--hover-color);color: white!important;}
+
+/* search result area background */
+.searchResult-9tQ1uo{background: transparent;}
+.content-yTz4x3 .searchResultsWrap-3-pOjs{background: none;}
+
+/* bd addon list and items */
+.bd-addon-list .bd-addon-card, .bd-addon-list .bd-addon-header {background-color: rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.07);}
+.bd-addon-list .bd-addon-card {box-shadow: 0 0 1px 1px rgba(48, 48, 48, 0.5);}
+
+                                                            /* shit i kept in the local theme files for months */
+.searchResultsWrap-3-pOjs::before, .jumpButton-1ol35X, .searchResult-2N9RV4.expanded-ovgtuV,.menu-3sdvDG::after{content: "";position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: calc(-2 * var(--user-popout-blur));background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);-webkit-filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(var(--user-popout-brightness)) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(60%) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));z-index: -1;border-radius: 10px;}
+.searchResultsWrap-3-pOjs{background: transparent;}
+
+.avatarUploaderInner-3UNxY3{background-color: var(--main-color);} /* background-Color of server invite background upload box */
+.theme-dark .card-FDVird:before{background-color: var(--hover-color);color: var(--hover-color)!important;border-color: transparent;} /* temp fix to the emoji cards in server settings */
+
+
+/* upload menu popout */
+.attachPopout-36hjtN{background: transparent;border: none;} 
+.attachPopout-36hjtN::before{content: "";position: absolute;top: 0;right: 0;bottom: 0;left: 0;margin: calc(-2 * var(--user-popout-blur));background: var(--user-popout-image) var(--user-popout-position)/var(--user-popout-size) var(--user-popout-repeat) var(--user-popout-attachment);-webkit-filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(var(--user-popout-brightness)) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));filter: grayscale(var(--user-popout-grayscale)) sepia(var(--user-popout-sepia)) invert(var(--user-popout-invert)) brightness(60%) contrast(var(--user-popout-contrast)) saturate(var(--user-popout-saturation)) blur(var(--user-popout-blur));z-index: -1;border-radius: 10px;}
+.popouts-2bnG9Z{left: 18px;} /* changes position of the popout a bit */
+
+
+.subscribeTooltipWrapper-32-Ce8{background: var(--hover-color);} /* popout 36 background-color */
+.subscribeTooltipWrapper-32-Ce8::after{border-bottom-color: var(--hover-color);} /* popout36's arrow */
+.menu-3sdvDG{background: transparent;} /* server dropdown menu */
+.viewAsRolesWarning-11eD70{background: var(--hover-color);color: white!important;}

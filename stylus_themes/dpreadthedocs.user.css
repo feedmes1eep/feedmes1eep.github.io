@@ -1,0 +1,28 @@
+/* ==UserStyle==
+@name           ReadtheDocs - Yeet :dab:
+@namespace      github.com/feedmes1eep
+@version        0.0.1
+@description    Dark usetstyle for documentations in ReadTheDocs
+@author         FeedMeS1eep
+@updateURL      https://feedmes1eep.github.io/stylus_themes/dpreadthedocs.user.css
+==/UserStyle== */
+
+@-moz-document domain("readthedocs.io") {
+    /* Insert code here... */
+    body,.wy-nav-content-wrap, .wy-nav-content{
+        background: #282138;
+        color: white
+    }
+    pre{
+        color:black;
+    }
+    .wy-side-nav-search{
+        background-color: #57109f;
+    }
+    .wy-nav-side{
+        background: #250636
+    }
+    .rst-versions .rst-current-version{
+        background-color: #af5050;
+    }
+}

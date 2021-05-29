@@ -1,0 +1,39 @@
+/* ==UserStyle==
+@name           Kwik.cx Dark theme
+@namespace      ?
+@version        0.0.0
+@description    Dark theme for kwik stream page domain
+@author         FeedMeS1eep
+@updateURL      https://feedmes1eep.github.io/stylus_themes/kwik.cx-darktheme.user.css
+==/UserStyle== */
+@-moz-document domain("kwik.cx") {
+    .main {
+        color: white;
+        background-color: #363636;
+    }
+    .logo-text {
+        color: white!important;
+    }
+    .hero-body {
+        background-color: #8f8f8f;
+    }
+    .navbar.is-dark {
+        background-color: #ffffff;
+        color: black!important;
+    }
+    .ads {
+        display: none;
+    }
+    .message-header {
+        background-color: white!important;
+        color: black!important;
+    }
+    .message-body {
+        background-color: #8f8f8f!important;
+        color: white!important;
+    }
+    .footer {
+        background-color: black;
+        color: white;
+    }
+}
