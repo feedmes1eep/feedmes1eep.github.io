@@ -20,7 +20,7 @@
 ├── index.md
 └── README.md\
 ```
-[bdskin](https://feedmes1eep.github.io/bdskin) - [dhi-fileshare](https://feedmes1eep.github.io/dhi-fileshare)
+[bdskin](https://feedmes1eep.github.io/bdskin) - [dhi-fileshare](https://nexuchan.github.io/dhi-fileshare/)
 
 Click on bdskin to go and 
 
